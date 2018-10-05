@@ -70,7 +70,7 @@ var app = new Vue({
             if (this.current === this.round) {
                 this.earn_stage = (0.5 * this.correct_num) - this.totalExcess;
                 alert('You have finished maximum number of 30 questions. You have made ' + this.correct_num + ' correct transactions. You have given away S$' + this.totalExcess + ' excess change. Your earnings for this stage is S$' + this.earn_stage + '. Please wait......');
-                window.location = 'file:///C:/Users/bizwjin/Desktop/cashier/transaction2.html';
+                window.location = 'https://damengjin.github.io/transaction2';
                 return;
             }
 
