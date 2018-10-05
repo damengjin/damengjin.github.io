@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+<div id="random_fixed">
+    <div><b>#Random Payment or Fixed Payment#</b></div>
+    <br/>
+    <div>Choose either "Random Payment" or "Fixed Payment"</div>
+    <div>One of the rows will be <b>randomly</b> selected by the computer to determine your earning in this stage.</div>
+    <br/>
+<div>
+    <table style="width:100%">
+            <tr>
+                <th>Row</th>
+                <th>Random Payment</th>
+                <th>Fixed Payment</th>
+                <th>Your choice</th>
+            </tr>
+            
+
+            <tr v-for="(choice, index) in choices2">
+                <td>{{index + 1}}</td>
+                <td>50% chance to get S$5, and 50% chance to get S$0</td>
+                <td>Earn S${{ (0.50 * index).toFixed(2) }} for sure</td>
+                <td> 
+                    <select v-model="choices2[index]">
+                        <option v-bind:value="1">Random</option>
+                        <option v-bind:value="2">Fixed</option>
+                    </select>
+                    <span>Selected: {{ choices2[index] }}</span>
+                </td>
+            </tr>
+    </table>
+
+ <div class="control-btn">
+    <button v-on:click="onSubmit">Submit</button>
+ </div>
+ 
+ <script>
+    localStorage.setItem('earn_radomfix', earn4)
+    localStorage.setItem('earn_radomfix_choices', choice2)
+ </script>
+
+</div>
+  <script src="js/random_fixed4.js"></script>
+</body>
+</html>

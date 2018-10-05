@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+    earn_trans1 = localStorage.getItem('earn_transac1');
+    earn_trans2 = localStorage.getItem('earn_transac2');
+    earn_trans3 = localStorage.getItem('earn_transac3');
+    earn_trans4 = localStorage.getItem('earn4');
+    earn_trans5 = localStorage.getItem('earn5');
+    earn_play = earn_trans1 + earn_trans2 + earn_trans3 + earn_trans4 + earn_trans5;
+    show_up = 4;
+    total = earn_play + show_up;
+</script>
+
+<body>
+<div id="final_result6">
+    <div><b>Session Earning# Summary</b></div>
+    <br/>
+
+    <div>The Stage 1 Cashier earning is : <b>earn_trans1</b></div>
+    <div>The Stage 2 Cashier earning is : <b>earn_trans2</b></div>
+    <div>The Stage 3 Cashier earning is : <b>earn_trans3</b></div>
+    <div>The Stage 4 Cashier earning is : <b>earn_trans4</b></div>
+    <div>The Stage 5 Cashier earning is : <b>earn_trans5</b></div>
+    <div>Earning due to playing is : <b>earn_play</b></div>
+    <div>The show-up fee is : <b>show_up</b></div>
+    <div>The Final Earning is : <b>total</b></div>
+    <br/>
+
+<div class="control-btn">
+    <button v-on:click="onSubmit">Submit</button>
+</div>
+    
+</div>
+  <script src="js/final_result6.js"></script>
+</body>
+</html>

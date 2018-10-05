@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+<div id="transaction1">
+    <div><b>Transactions#{{current}}/{{round}}</b></div>
+    <br/>
+    <div>The time you have left: <b>{{formatTime}}</b></div>
+
+    <div>Select the number of notes and coins as the change</div>
+    <div>The price customer needs to pay: <b>{{price}}</b> </div>
+    <div>The actual pay from the customer: <b>{{pay}}</b></div>
+    <div>The change to be given to the customer: <b>{{change}}</b></div>
+
+    <br/>
+    <div>The excess accumulated from past transactions: <b>{{totalExcess}}</b></div>
+<div>
+    <div class="row">
+        <div class="note"><img src="img/ten.png" style="width:300px;height:146px;"/>
+            <input v-model="ten"/>
+        </div>
+        <div class="note"><img src="img/five.png" style="width:300px;height:146px;"/>
+            <input v-model="five"/>
+        </div>
+        <div class="note"><img src="img/two.png" style="width:300px;height:146px;"/>
+            <input v-model="two"/>
+        </div>
+        <div class="note"><img src="img/dollar.png" style="width:150px;height:146px;"/>
+            <input v-model="one"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="note"><img src="img/fiftyc.png" style="width:150px;height:146px;"/>
+            <input v-model="fiftyc"/>
+        </div>
+        <div class="note"><img src="img/twentyc.png" style="width:150px;height:146px;"/>
+            <input v-model="twentyc"/>
+        </div>
+        <div class="note"><img src="img/tenc.png" style="width:150px;height:146px;"/>
+            <input v-model="tenc"/>
+        </div>
+        <div class="note"><img src="img/fivec.png" style="width:150px;height:146px;"/>
+            <input v-model="fivec"/>
+    </div>
+</div>
+
+<div class="control-btn">
+    <button v-on:click="onSubmit">Submit</button>
+</div>
+    
+<script>
+localStorage.setItem('earn_transac1', earn_stage)
+</script>
+
+</div>
+  <script src="js/transaction1.js"></script>
+</body>
+</html>

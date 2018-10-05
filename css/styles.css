@@ -1,0 +1,32 @@
+html body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#app {
+    width: 100%;
+    overflow: hidden;
+}
+
+.row {
+    width: 100%;
+    overflow: hidden;
+}
+.note {
+    float: left;
+    width: 24%;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.control-btn {
+    width: 100%;
+}
+
+.box{
+    float: center;
+    width: 80%;
+    height: 80px;
+    border: 1px solid black;
+}
