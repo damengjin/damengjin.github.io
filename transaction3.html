@@ -13,61 +13,74 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-    multiplier = localStorage.getItem('multiplier')
-    deduction = localStorage.getItem('deduction')
-</script>
 
 <body>
 <div id="transaction3">
-    <div><b>Transactions#{{current}}/{{round}}</b></div>
-    <br/>
-    <div>The time you have left: <b>{{formatTime}}</b></div>
-
-    <div>Select the number of notes and coins as the change</div>
-    <div>The price customer needs to pay: <b>{{price}}</b> </div>
-    <div>The actual pay from the customer: <b>{{pay}}</b></div>
-    <div>The change to be given to the customer: <b>{{change}}</b></div>
-
-    <br/>
-    <div>The excess accumulated from past transactions: <b>{{totalExcess3}}</b></div>
-<div>
-    <div class="row">
-        <div class="note"><img src="img/ten.png" style="width:300px;height:146px;"/>
-            <input v-model="ten"/>
-        </div>
-        <div class="note"><img src="img/five.png" style="width:300px;height:146px;"/>
-            <input v-model="five"/>
-        </div>
-        <div class="note"><img src="img/two.png" style="width:300px;height:146px;"/>
-            <input v-model="two"/>
-        </div>
-        <div class="note"><img src="img/dollar.png" style="width:150px;height:146px;"/>
-            <input v-model="one"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="note"><img src="img/fiftyc.png" style="width:150px;height:146px;"/>
-            <input v-model="fiftyc"/>
-        </div>
-        <div class="note"><img src="img/twentyc.png" style="width:150px;height:146px;"/>
-            <input v-model="twentyc"/>
-        </div>
-        <div class="note"><img src="img/tenc.png" style="width:150px;height:146px;"/>
-            <input v-model="tenc"/>
-        </div>
-        <div class="note"><img src="img/fivec.png" style="width:150px;height:146px;"/>
-            <input v-model="fivec"/>
-    </div>
-</div>
-
-<div class="control-btn">
-    <button v-on:click="onSubmit">Submit</button>
-</div>
+    <div class="info">
+            <div><b>Transactions#{{current}}/{{round}}</b></div>
+            <br/>
+            <div>Time left: <b>{{formatTime}}</b></div>
     
-<script>
-localStorage.setItem('earn_transac3', earn_stage3)
-</script>
+            <div>Select the number of notes and coins as the change</div>
+            <div>Amount to collect: {{price}} </div>
+            <div>Payment made by customer: {{pay}}</div>
+            <div>Change: <b>{{change}}</b></div>
+    
+            <br/>
+            <div>The excess accumulated from past transactions: <b>{{totalExcess3}}</b></div>
+        </div>
+    <div>
+        <div class="row">
+            <div class="col col-3">
+                <img src="img/ten.png"/><br/>
+                <button v-on:click="sub('ten')">-</button><input v-model="ten"/><button v-on:click="add('ten')">+</button>
+            </div>
+            <div class="col col-3">
+                <img src="img/five.png"/><br/>
+                <button v-on:click="sub('five')">-</button><input v-model="five"/><button v-on:click="add('five')">+</button>
+            </div>
+            <div class="col col-3">
+                <img src="img/two.png"/><br/>
+                <button v-on:click="sub('two')">-</button><input v-model="two"/><button v-on:click="add('two')">+</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-5">
+                <div class="float-bottom">
+                    <img src="img/dollar.png" style="width: 55%"/><br/>
+                    <button v-on:click="sub('one')">-</button><input v-model="one"/><button v-on:click="add('one')">+</button>
+                </div>
+            </div>
+            <div class="col col-5">
+                <div class="float-bottom">
+                    <img src="img/fiftyc.png" style="width: 50%"/><br/>
+                    <button v-on:click="sub('fiftyc')">-</button><input v-model="fiftyc"/><button v-on:click="add('fiftyc')">+</button>
+                </div>
+            </div>
+            <div class="col col-5">
+                <div class="float-bottom">
+                    <img src="img/twentyc.png" style="width: 45%"/><br/>
+                    <button v-on:click="sub('twentyc')">-</button><input v-model="twentyc"/><button v-on:click="add('twentyc')">+</button>
+                </div>
+            </div>
+            <div class="col col-5">
+                <div class="float-bottom">
+                    <img src="img/tenc.png" style="width: 43%"/><br/>
+                    <button v-on:click="sub('tenc')">-</button><input v-model="tenc"/><button v-on:click="add('tenc')">+</button>
+                </div>
+            </div>
+            <div class="col col-5">
+                <div class="float-bottom">
+                    <img src="img/fivec.png" style="width: 35%"/><br/>
+                    <button v-on:click="sub('fivec')">-</button><input v-model="fivec"/><button v-on:click="add('fivec')">+</button>
+                </div>
+            </div>
+            
+        </div>
+    
+    <div class="control-btn">
+        <button v-on:click="onSubmit">Submit</button>
+    </div>
 
 </div>
   <script src="js/transaction3.js"></script>

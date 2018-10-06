@@ -15,12 +15,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <body>
 <div id="scheme_choice">
+ <div class="info">
     <div><b>#Earning Schemes#</b></div>
     <br/>
     <div>Choose either "Scheme 1: With Deduction" or "Scheme 2: No Deduction"</div>
     <div>One of the rows will be <b>randomly</b> selected by the computer to determine your earning scheme in this stage.</div>
     <br/>
-
+</div>
     <table style="width:100%">
             <tr>
                 <th>Row</th>
@@ -35,7 +36,7 @@
                 <td>Earn S$0.50 for each correct transaction. Excess change will be deducted from your earnings</td>
                 <td>Earn S${{ (0.05 * (index+1)).toFixed(2) }} for each correct transaction. Excess change will <b>NOT</b> be deducted from your earnings</td>
                 <td> 
-                    <select v-model="choices[index]">
+                    <select v-model="choices[index]" @change="onSelectChange(index)">
                         <option v-bind:value="1">Scheme 1</option>
                         <option v-bind:value="2">Scheme 2</option>
                     </select>
@@ -45,10 +46,7 @@
             
     </table>
 
-<script>
-    localStorage.setItem('multiplier', multiplier)
-    localStorage.setItem('deduction', deduct)
-</script>
+
 
  <div class="control-btn">
     <button v-on:click="onSubmit">Submit</button>

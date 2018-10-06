@@ -2,30 +2,28 @@ var app = new Vue({
     el: '#scheme_choice',
     data: {
       choices: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
+      changedIndex: -1,
       scheme_num: 0,
       multiplier: 0,
       deduct: 0,
       Deductstr: ''
     },
 
-    watch: {
-        choices: function (val) {
-            let pivot = 0;
-            for (let i = val.length-1; i >= 0; i--) {
-                if (val[i] === 1) {
-                    if (pivot === 0) {
-                        pivot = i;
-                    }
-                }
-                if (pivot > 0) {
-                    this.choices[i] = 1;
-                }
-            }
-        }
-    },
 
     methods: {
+        onSelectChange (pivot) {
+            let val = this.choices;
+            if (val[pivot] === 1) {
+                for (let j = 0; j <= pivot; j++) {
+                    this.choices[j] = 1;
+                }
+            } else if (val[pivot] === 2) {
+                for (let j = pivot; j < val.length; j++) {
+                    this.choices[j] = 2;
+                }
+            }
+        },
+
         onSubmit () {
 
             // generate random choice from 1 ~ 10
@@ -41,8 +39,12 @@ var app = new Vue({
                 this.deduct = 0;
                 this.Deductstr = 'Excess change will NOT be deducted from your earnings.';
             }
+
+            localStorage.setItem('multiplier', this.multiplier)
+            localStorage.setItem('deduction', this.deduct)
+
             alert('The computer has randomly chosen row' + this.scheme_num +'. Based on your selection, you will earn S$' + this.multiplier + ' for every correct transaction in this stage. ' + this.Deductstr + ' Please wait......');
-            window.location = 'file:///C:/Users/bizwjin/Desktop/cashier/transaction3.html';    
+            window.location = 'file:///Users/damengjin/Desktop/damengjin.github.io/transaction3.html';    
             return;
         }
 

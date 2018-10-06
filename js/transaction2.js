@@ -40,13 +40,25 @@ var app = new Vue({
             if (this.countdown === 0) {
                 this.earn_stage2 = 0.5 * this.correct_num2;
                 alert('You have finished the test. You have made ' + this.correct_num2 + ' correct transactions. Your earnings for this stage is S$' + this.earn_stage2 + '. Please wait......');
-                window.location = 'file:///C:/Users/bizwjin/Desktop/cashier/scheme_choice3.html';
+                window.location = 'file:///Users/damengjin/Desktop/damengjin.github.io/scheme_choice3.html';
                 return;
             }
             setTimeout(() => {
                 this.countdown--;
                 this.tick();
             }, 1000);
+        },
+
+        add (val) {
+            console.log('++')
+            this[val]++;
+        },
+
+        sub (val) {
+            console.log('++')
+            if (this[val] > 0){
+                this[val]--;
+            }
         },
 
         clear() {
@@ -64,7 +76,7 @@ var app = new Vue({
             if (this.current === this.round) {
                 this.earn_stage2 = 0.5 * this.correct_num2;
                 alert('You have finished the test. You have made ' + this.correct_num2 + ' correct transactions. Your earnings for this stage is S$' + this.earn_stage2 + '. Please wait......');
-                window.location = 'file:///C:/Users/bizwjin/Desktop/cashier/scheme_choice3.html';
+                window.location = 'file:///Users/damengjin/Desktop/damengjin.github.io/scheme_choice3.html';
                 return;
             }
 

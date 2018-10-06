@@ -9,10 +9,49 @@ html body {
     overflow: hidden;
 }
 
+.info div {
+    text-align: center;
+}
+
 .row {
     width: 100%;
     overflow: hidden;
 }
+
+.col {
+    float: left;
+    height: 220px;
+    text-align: center;
+    vertical-align : bottom;
+    position: relative;
+}
+
+.col input {
+    width: 50px;
+    font-size: 20px;
+}
+
+.col-3 {
+    width: 33%;
+}
+
+.col-5 {
+    width: 20%;
+}
+
+.col img {
+    width: 80%;
+}
+
+.col button {
+    font-size: 20px;
+}
+
+.float-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
 .note {
     float: left;
     width: 24%;
@@ -22,6 +61,8 @@ html body {
 
 .control-btn {
     width: 100%;
+    font-size: 40px;
+    text-align: center;
 }
 
 .box{
@@ -29,4 +70,8 @@ html body {
     width: 80%;
     height: 80px;
     border: 1px solid black;
+    font-size: 20px
+    text-align: center;
+    vertical-align : bottom;
+    position: relative;
 }

@@ -2,30 +2,26 @@ var app = new Vue({
     el: '#random_fixed',
     data: {
       choices2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-
+      changedIndex: -1,
       random_row: 0,
       earn4: 0,
       ansStr: ''
     },
 
-    
-    watch: {
-        choices2: function (val) {
-            let pivot = 0;
-            for (let i = val.length-1; i >= 0; i--) {
-                if (val[i] === 1) {
-                    if (pivot === 0) {
-                        pivot = i;
-                    }
+    methods: {
+        onSelectChange (pivot2) {
+            let val = this.choices2;
+            if (val[pivot2] === 1) {
+                for (let j = 0; j <= pivot2; j++) {
+                    this.choices2[j] = 1;
                 }
-                if (pivot > 0) {
-                    this.choices2[i] = 1;
+            } else if (val[pivot2] === 2) {
+                for (let j = pivot2; j < val.length; j++) {
+                    this.choices2[j] = 2;
                 }
             }
-        }
-    },
+        },
 
-    methods: {
         onSubmit () {
             // generate random choice from 1 ~ 10
             this.random_row = Math.floor(Math.random() * 10) + 1;
@@ -37,8 +33,8 @@ var app = new Vue({
                 this.earn4 = 0.5 * (this.random_row-1);
                 this.ansStr = 'fixed Payment. ';
             }
-            alert('The computer has randomly chosen row ' + this.random_row +'. Based on your selection, you will earn a ' + this.ansStr + 'You will receive S$' + this.pay + ' in this stage. Please wait......');
-            window.location = 'file:///C:/Users/bizwjin/Desktop/cashier/Adding_numbers5.html';  
+            alert('The computer has randomly chosen row ' + this.random_row +'. Based on your selection, you will earn a ' + this.ansStr + 'You will receive S$' + this.earn4 + ' in this stage. Please wait......');
+            window.location = 'file:///Users/damengjin/Desktop/damengjin.github.io/Adding_numbers5.html';  
             return;
         }
     }

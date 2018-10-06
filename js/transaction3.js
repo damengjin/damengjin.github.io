@@ -43,21 +43,15 @@ var app = new Vue({
         }
     },
     
-    watch: {
-        multiplier: function (val) {
-            multiplier = val;
-        },
 
-        deduction: function (val) {
-            deduction = val;
-        }
-      },
 
     methods: {
         tick () {
             if (this.countdown === 0) {
+                this.multiplier = localStorage.getItem('multiplier');
+                this.deduction = localStorage.getItem('deduction');
                 this.earn_stage3 = (this.multiplier * this.correct_num3) - (this.deduction * this.totalExcess3);
-                alert('Time is up. You have made ' + this.correct_num3 + ' correct transactions. S$' + (this.deduction * this.totalExcess3) + ' is deducted due to excess change. Your earnings for this stage is S$' + this.earn_stage + '. Please wait......');
+                alert('Time is up. You have made ' + this.correct_num3 + ' correct transactions. S$' + (this.deduction * this.totalExcess3) + ' is deducted due to excess change. Your earnings for this stage is S$' + Math.round(this.earn_stage3*10)/10 + '. Please wait......');
                 window.location = 'file:///C:/Users/bizwjin/Desktop/cashier/random_fixed4.html';
                 return;
             }
@@ -66,6 +60,8 @@ var app = new Vue({
                 this.tick();
             }, 1000);
         },
+
+
 
         clear() {
             this.ten = 0;
@@ -80,8 +76,10 @@ var app = new Vue({
 
         next () {
             if (this.current === this.round) {
+                this.multiplier = localStorage.getItem('multiplier');
+                this.deduction = localStorage.getItem('deduction');
                 this.earn_stage3 = (this.multiplier * this.correct_num3) - (this.deduction * this.totalExcess3);
-                alert('You have finished the maximum number of questions in this test. You have made ' + this.correct_num3 + ' correct transactions. S$' + (this.deduction * this.totalExcess3) + ' is deducted due to excess change. Your earnings for this stage is S$' + this.earn_stage + '. Please wait......');
+                alert('You have finished the maximum number of questions in this test. You have made ' + this.correct_num3 + ' correct transactions. S$' + (this.deduction * this.totalExcess3) + ' is deducted due to excess change. Your earnings for this stage is S$' + Math.round(this.earn_stage3*10)/10 + '. Please wait......');
                 window.location = 'file:///C:/Users/bizwjin/Desktop/cashier/random_fixed4.html';
                 return;
             }
