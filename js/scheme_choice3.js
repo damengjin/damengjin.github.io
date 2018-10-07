@@ -44,7 +44,7 @@ var app = new Vue({
             localStorage.setItem('deduction', this.deduct)
 
             alert('The computer has randomly chosen row' + this.scheme_num +'. Based on your selection, you will earn S$' + this.multiplier + ' for every correct transaction in this stage. ' + this.Deductstr + ' Please wait......');
-            window.location = 'file:///Users/damengjin/Desktop/damengjin.github.io/transaction3.html';    
+            window.location = 'transaction3.html';    
             return;
         }
 

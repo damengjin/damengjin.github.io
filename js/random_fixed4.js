@@ -28,13 +28,15 @@ var app = new Vue({
 
             if (this.choices2[this.random_row - 1] === 1) {
                 this.earn4 = Math.random() < 0.5 ? 0 : 5;
+                localStorage.setItem('earn4', this.earn4);
                 this.ansStr = 'random Payment. ';
             } else {
                 this.earn4 = 0.5 * (this.random_row-1);
+                localStorage.setItem('earn4', this.earn4);
                 this.ansStr = 'fixed Payment. ';
             }
             alert('The computer has randomly chosen row ' + this.random_row +'. Based on your selection, you will earn a ' + this.ansStr + 'You will receive S$' + this.earn4 + ' in this stage. Please wait......');
-            window.location = 'file:///Users/damengjin/Desktop/damengjin.github.io/Adding_numbers5.html';  
+            window.location = 'Adding_numbers5.html';  
             return;
         }
     }

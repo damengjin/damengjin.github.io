@@ -13,37 +13,63 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-    earn_trans1 = localStorage.getItem('earn_transac1');
-    earn_trans2 = localStorage.getItem('earn_transac2');
-    earn_trans3 = localStorage.getItem('earn_transac3');
-    earn_trans4 = localStorage.getItem('earn4');
-    earn_trans5 = localStorage.getItem('earn5');
-    earn_play = earn_trans1 + earn_trans2 + earn_trans3 + earn_trans4 + earn_trans5;
-    show_up = 4;
-    total = earn_play + show_up;
-</script>
+
 
 <body>
 <div id="final_result6">
-    <div><b>Session Earning# Summary</b></div>
-    <br/>
+  <div class="info"> 
+        <div><b>Session Earning# Summary</b></div>
+        <br/>
 
-    <div>The Stage 1 Cashier earning is : <b>earn_trans1</b></div>
-    <div>The Stage 2 Cashier earning is : <b>earn_trans2</b></div>
-    <div>The Stage 3 Cashier earning is : <b>earn_trans3</b></div>
-    <div>The Stage 4 Cashier earning is : <b>earn_trans4</b></div>
-    <div>The Stage 5 Cashier earning is : <b>earn_trans5</b></div>
-    <div>Earning due to playing is : <b>earn_play</b></div>
-    <div>The show-up fee is : <b>show_up</b></div>
-    <div>The Final Earning is : <b>total</b></div>
-    <br/>
-
-<div class="control-btn">
-    <button v-on:click="onSubmit">Submit</button>
-</div>
+        <div>The Stage 1 Cashier earning is : <b>{{earn_trans1}}</b></div>
+        <div>The Stage 2 Cashier earning is : <b>{{earn_trans2}}</b></div>
+        <div>The Stage 3 Cashier earning is : <b>{{earn_trans3}}</b></div>
+        <div>The Stage 4 Cashier earning is : <b>{{earn_trans4}}</b></div>
+        <div>The Stage 5 Cashier earning is : <b>{{earn_trans5}}</b></div>
+        <div>Earning due to playing is : <b>{{earn_play}}</b></div>
+        <div>The show-up fee is : <b>{{show_up}}</b></div>
+        <div>The Final Earning is : <b>{{total}}</b></div>
+        <br/>
+  </div> 
     
 </div>
-  <script src="js/final_result6.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#final_result6',
+        data: {
+            earn_trans1: 0,
+            earn_trans2: 0,
+            earn_trans3: 0,
+            earn_trans4: 0,
+            earn_trans5: 0,
+            show_up: 4,
+        },
+
+        created () {
+            this.earn_trans1 = this.parseNumber(localStorage.getItem('earn1'));
+            this.earn_trans2 = this.parseNumber(localStorage.getItem('earn2'));
+            this.earn_trans3 = this.parseNumber(localStorage.getItem('earn3'));
+            this.earn_trans4 = this.parseNumber(localStorage.getItem('earn4'));
+            this.earn_trans5 = this.parseNumber(localStorage.getItem('earn5'));
+        },
+
+        methods: {
+            parseNumber (value) {
+                return parseFloat(parseFloat(value).toFixed(2))
+            }
+        },
+
+        computed: {
+            earn_play () {
+                return this.earn_trans1 + this.earn_trans2 + this.earn_trans3 + this.earn_trans4 + this.earn_trans5;
+            },
+            total () {
+                return this.earn_play + this.show_up
+            }
+        }
+    })
+    </script>
+
 </body>
 </html>

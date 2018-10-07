@@ -1,0 +1,35 @@
+function fullURLGenerator() {
+  var url = "https://docs.google.com/forms/d/e/1FAIpQLSffURzFPSlPBLHQV3lmzQfzT_MXxJ-x_Ay5xMXfYRMhvr88jA/formResponse?";
+  var submitRef = "&submit=Submit"
+  var idName = "entry.2066888345";
+  var cashName = "entry.1917427137";
+  var changedName = "entry.1026411113";
+  var idTry = encodeURIComponent(123);
+  var cashTry = encodeURIComponent(2.1);
+  var changedTry = encodeURIComponent(1.5);
+  var fullURL = url + idName +"=" + idTry + "&" + cashName + "=" + cashTry + "&" + changedName + "=" + changedTry +submitRef;
+  return fullURL;
+}
+
+function loadDoc(fullURL) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", fullURL, true);
+  xhttp.send();
+}
+
+
+
+
+
+https://docs.google.com/forms/d/e/1FAIpQLScWfLKDXUn4O3O01jnv4UrTnLBeBCFtfPIASO01F5JCm7Ssgg/formResponse?entry.1563813375=aaa&entry.871563223=123
+
+
+
+
+https://docs.google.com/forms/u/1/d/e/1FAIpQLScWfLKDXUn4O3O01jnv4UrTnLBeBCFtfPIASO01F5JCm7Ssgg/formResponse

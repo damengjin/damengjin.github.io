@@ -11,6 +11,7 @@ html body {
 
 .info div {
     text-align: center;
+    width: 100%;
 }
 
 .row {
@@ -70,8 +71,19 @@ html body {
     width: 80%;
     height: 80px;
     border: 1px solid black;
-    font-size: 20px
+    font-size: 20px;
     text-align: center;
     vertical-align : bottom;
     position: relative;
+}
+
+.submit-btn {
+    font-size: 20px;
+    background: rgb(175,238,238);
+    padding: 10px 15px;
+}
+
+.table td{
+    border: 1px solid black;
+    text-align: center;
 }

@@ -23,7 +23,8 @@ var app = new Vue({
         excess: []
       },
 
-      countdown: 180
+      countdown: 20,
+      userNote: [1, 2, 5, 10, 50]
     },
 
     created () {
@@ -44,15 +45,15 @@ var app = new Vue({
     },
     
 
-
     methods: {
         tick () {
             if (this.countdown === 0) {
                 this.multiplier = localStorage.getItem('multiplier');
                 this.deduction = localStorage.getItem('deduction');
                 this.earn_stage3 = (this.multiplier * this.correct_num3) - (this.deduction * this.totalExcess3);
+                localStorage.setItem('earn3', this.earn_stage3)
                 alert('Time is up. You have made ' + this.correct_num3 + ' correct transactions. S$' + (this.deduction * this.totalExcess3) + ' is deducted due to excess change. Your earnings for this stage is S$' + Math.round(this.earn_stage3*10)/10 + '. Please wait......');
-                window.location = 'file:///C:/Users/bizwjin/Desktop/cashier/random_fixed4.html';
+                window.location = 'random_fixed4.html';
                 return;
             }
             setTimeout(() => {
@@ -61,7 +62,17 @@ var app = new Vue({
             }, 1000);
         },
 
+        add (val) {
+            console.log('++')
+            this[val]++;
+        },
 
+        sub (val) {
+            console.log('++')
+            if (this[val] > 0){
+                this[val]--;
+            }
+        },
 
         clear() {
             this.ten = 0;
@@ -79,8 +90,9 @@ var app = new Vue({
                 this.multiplier = localStorage.getItem('multiplier');
                 this.deduction = localStorage.getItem('deduction');
                 this.earn_stage3 = (this.multiplier * this.correct_num3) - (this.deduction * this.totalExcess3);
+                localStorage.setItem('earn3', this.earn_stage3)
                 alert('You have finished the maximum number of questions in this test. You have made ' + this.correct_num3 + ' correct transactions. S$' + (this.deduction * this.totalExcess3) + ' is deducted due to excess change. Your earnings for this stage is S$' + Math.round(this.earn_stage3*10)/10 + '. Please wait......');
-                window.location = 'file:///C:/Users/bizwjin/Desktop/cashier/random_fixed4.html';
+                window.location = 'random_fixed4.html';
                 return;
             }
 
@@ -89,9 +101,15 @@ var app = new Vue({
 
             // new change
             value1 = Math.round(Math.random()*500+1) / 10;
-            value2 = Math.round(Math.random()*500+1) / 10;
-            this.price = Math.min(value1, value2);
-            this.pay = Math.ceil(Math.max(value1, value2));
+            this.price = value1;
+            this.pay = 0;
+
+            while (this.pay < this.price) {
+                let randIndex = Math.round(Math.random() * (this.userNote.length-1))
+                let radomNote = this.userNote[randIndex]
+                console.log(randIndex)
+                this.pay += radomNote
+            };
 
             // increase round
             this.current++;
@@ -99,7 +117,7 @@ var app = new Vue({
 
         onSubmit () {
             // calculate
-            result = parseInt(this.ten) * 10 + parseInt(this.five) * 5 + parseInt(this.two) * 2 + parseInt(this.one) + parseInt(this.fiftyc) * 0.5 + parseInt(this.twentyc) * 0.2 + parseInt(this.tenc) * 0.1 + parseInt(this.fivec) * 0.05;
+            result = Math.round((parseInt(this.ten) * 10 + parseInt(this.five) * 5 + parseInt(this.two) * 2 + parseInt(this.one) + parseInt(this.fiftyc) * 0.5 + parseInt(this.twentyc) * 0.2 + parseInt(this.tenc) * 0.1 + parseInt(this.fivec) * 0.05)*100)/100;
 
             // compare
             if (result < this.change) {

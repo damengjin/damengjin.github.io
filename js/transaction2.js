@@ -18,7 +18,8 @@ var app = new Vue({
       tenc: 0,
       fivec: 0,
 
-      countdown: 180
+      countdown: 20,
+      userNote: [1, 2, 5, 10, 50]
     },
 
     created () {
@@ -39,8 +40,9 @@ var app = new Vue({
         tick () {
             if (this.countdown === 0) {
                 this.earn_stage2 = 0.5 * this.correct_num2;
-                alert('You have finished the test. You have made ' + this.correct_num2 + ' correct transactions. Your earnings for this stage is S$' + this.earn_stage2 + '. Please wait......');
-                window.location = 'file:///Users/damengjin/Desktop/damengjin.github.io/scheme_choice3.html';
+                localStorage.setItem('earn2', this.earn_stage2);
+                alert('Time is up! You have made ' + this.correct_num2 + ' correct transactions. Your earnings for this stage is S$' + this.earn_stage2 + '. Please wait......');
+                window.location = 'scheme_choice3.html';
                 return;
             }
             setTimeout(() => {
@@ -75,8 +77,9 @@ var app = new Vue({
         next () {
             if (this.current === this.round) {
                 this.earn_stage2 = 0.5 * this.correct_num2;
-                alert('You have finished the test. You have made ' + this.correct_num2 + ' correct transactions. Your earnings for this stage is S$' + this.earn_stage2 + '. Please wait......');
-                window.location = 'file:///Users/damengjin/Desktop/damengjin.github.io/scheme_choice3.html';
+                localStorage.setItem('earn2', this.earn_stage2);
+                alert('You have finished maximum number of questions. You have made ' + this.correct_num2 + ' correct transactions. Your earnings for this stage is S$' + this.earn_stage2 + '. Please wait......');
+                window.location = 'scheme_choice3.html';
                 return;
             }
 
@@ -85,9 +88,15 @@ var app = new Vue({
 
             // new change
             value1 = Math.round(Math.random()*500+1) / 10;
-            value2 = Math.round(Math.random()*500+1) / 10;
-            this.price = Math.min(value1, value2);
-            this.pay = Math.ceil(Math.max(value1, value2));
+            this.price = value1;
+            this.pay = 0;
+
+            while (this.pay < this.price) {
+                let randIndex = Math.round(Math.random() * (this.userNote.length-1))
+                let radomNote = this.userNote[randIndex]
+                console.log(randIndex)
+                this.pay += radomNote
+            };
 
             // increase round
             this.current++;
@@ -95,14 +104,14 @@ var app = new Vue({
 
         onSubmit () {
             // calculate
-            result = parseInt(this.ten) * 10 + parseInt(this.five) * 5 + parseInt(this.two) * 2 + parseInt(this.one) + parseInt(this.fiftyc) * 0.5 + parseInt(this.twentyc) * 0.2 + parseInt(this.tenc) * 0.1 + parseInt(this.fivec) * 0.05;
+            result = Math.round((parseInt(this.ten) * 10 + parseInt(this.five) * 5 + parseInt(this.two) * 2 + parseInt(this.one) + parseInt(this.fiftyc) * 0.5 + parseInt(this.twentyc) * 0.2 + parseInt(this.tenc) * 0.1 + parseInt(this.fivec) * 0.05)*100)/100;
 
             // compare
             if (result < this.change) {
                 alert('You have short changed the customer');
                 return;
             } else if (result === this.change){
-                this.correct_num ++;
+                this.correct_num2 ++;
             } 
             this.next();
         }
