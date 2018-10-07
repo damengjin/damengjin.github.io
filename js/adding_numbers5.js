@@ -9,7 +9,7 @@ var app = new Vue({
       value3: 0,
       value4: 0,
       ans: 0,
-      countdown: 180
+      countdown: 20
     },
 
     created () {
